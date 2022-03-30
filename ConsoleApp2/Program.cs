@@ -8,14 +8,18 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* Cuando tenemos un codigo muy grande cuando lo guardamos para continuar otro dia podemos poner comentarios //TODO 
-              en el lugar donde lo dejamos, o si en los lugares donde vamos a codificar nuevas funcionalidades
-              las cuales las podemos ubicar cuando volvamos a abrir el archivo, mediante el menu:  Ver ->  Lista de Tareas
+            /* Podemos crear clases en archivos independientes, para ello podemos oprimir boton derecho en el explorador de soluciones
+             en el icono de la aplicacion y en el menu contextual elegir:  Agregar -> Clase
+              otra forma seria ir al menu y elegir: Proyecto ->  Agregar Clase
+             las clases estan en archivos diferentes pero funcionan como si fueran una sola unidad, este concepto se llama 
+              modularizacion o trabajar con modulos en P.O.O.  
             */
             Alumno juan;
             Alumno maria;
+            Profesor hugo; //la clase profesor esta definida en un archivo independiente llamado profesor.cs
             juan = new Alumno();
             maria = new Alumno("Maria"); // podemos tener una sobrecarga de constructores de la clase Alumno
+            hugo = new Profesor("hugo", 12333432, 1.7, 90);
             juan.setNombre("Juan");
             maria.setNacimiento("4/4/2004");
             juan.Altura = 1.80;   //accedemos a la propiedad altura
@@ -29,6 +33,7 @@ namespace ConsoleApp2
             Console.WriteLine("La edad de {0} es: {1} , la altura : {2} metros y el peso: {3} kilos", maria.getNombre(), maria.getEdad(), maria.Altura, maria.Peso);
             Console.WriteLine("El color de los ojos de Maria son {0}", maria.Ojos);
             Console.WriteLine("El D.N.I. de Juan es: {0}", juan.Dni);
+            Console.WriteLine("El nombre del profesor de la materia se llama {0} ", hugo.Nombre);
             Console.ReadKey();
         }
     }
