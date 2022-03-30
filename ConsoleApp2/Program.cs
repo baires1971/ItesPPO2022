@@ -8,8 +8,8 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* las propiedades en C# permiten encapsular los valores de los atributos de un objeto, no pudiendo acceder directamente desde 
-               otra clase pero permiten utilizar una sintaxis mas sencilla que los metodos getter y setter para modificar estos atributos
+            /* las propiedades en C# pueden ser de solo lectura o de solo escritura, dependiendo si optamos por poner solo un metodo get
+              o un metodo set. Tambien podemos simplificar la sintaxis de las propiedades con el operador lambda
             */
             Alumno juan;
             Alumno maria;
@@ -22,8 +22,12 @@ namespace ConsoleApp2
             juan.Peso = 90;
             maria.Peso = 70;
             maria.Peso += 5; //puedo sumar, incrementar una propiedad como si accedieramos directamente a la variable del atributo
+            juan.Password = "1234";
+            juan.Dni = 30456789;
             Console.WriteLine("L edad de {0} es: {1} , la altura : {2} metros y el peso: {3} kilos", juan.getNombre(), juan.getEdad(), juan.Altura, juan.Peso);
             Console.WriteLine("La edad de {0} es: {1} , la altura : {2} metros y el peso: {3} kilos", maria.getNombre(), maria.getEdad(), maria.Altura, maria.Peso);
+            Console.WriteLine("El color de los ojos de Maria son {0}", maria.Ojos);
+            Console.WriteLine("El D.N.I. de Juan es: {0}", juan.Dni);
             Console.ReadKey();
         }
     }
@@ -34,8 +38,24 @@ namespace ConsoleApp2
         private DateTime nacimiento;
         private int dni;
         private double altura;
+        private string password;
         const int ANIO = 365; //declaramos con la palabra reservada "const" a la variable ANIO como una constante, 
                               // cuyo valor no podemos cambiar en toda la ejecucion del programa
+
+        public string Ojos //declaramos una propiedad automatica de solo lectura
+        {
+            get;
+        }
+        public string Password //propiedad de solo escritura
+        {
+            set { password = value; }
+        }
+
+        public int Dni //creamos la propiedad Dni utilizando la anotacion lambda
+        {
+            get => this.dni;
+            set => this.dni = value;
+        }
         public double Altura //declaramos la propiedad ALTURA, con los metodos get y set para controlar el valor que ingresa
         {                    // y el valor que sale del atributo "altura" a los objetos fuera de la clase alumno
             get { return this.altura; }
@@ -48,14 +68,22 @@ namespace ConsoleApp2
         {                 // este debe tener el mismo nombre que el de la clase y debe ser publico
             nombre = "";
             nacimiento = DateTime.Parse("06/02/2000");
-            //Altura = 1.5;
-            //Peso = 50;
-            dni = 0;
+            this.Altura = 1.5;
+            this.Peso = 50;
+            this.dni = 0;
+            this.password = "ites2022";
+            this.Ojos = "Azules";
         }
 
         public Alumno(string _nombre)
         {
             nombre = _nombre;
+            nacimiento = DateTime.Parse("06/02/2000");
+            this.Altura = 1.5;
+            this.Peso = 50;
+            this.dni = 0;
+            this.password = "ites2022";
+            this.Ojos = "marrones";
         }
         private int cantAnios(int dias)
         {
@@ -94,4 +122,5 @@ namespace ConsoleApp2
 
 
 }
+
 
