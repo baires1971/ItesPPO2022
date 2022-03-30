@@ -22,7 +22,7 @@ namespace ConsoleApp2
 
     class Cuadrado
     {
-        double lado = 10; // propiedad de la clase cuadrado
+        double lado = 10; // propiedad de la clase cuadrado en este caso privado por defecto
 
         double CalcularArea(double lado) // metodo de la clase cuadrado que calcula su area
         {
