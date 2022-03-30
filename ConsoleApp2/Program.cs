@@ -8,8 +8,9 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* Cuando las clases que codificamos son muy grandes con una cantidad enorme de lineas de codigo. Podemos en C# dividirlas 
-              en partes mas pequeñas 
+            /* Cuando tenemos un codigo muy grande cuando lo guardamos para continuar otro dia podemos poner comentarios //TODO 
+              en el lugar donde lo dejamos, o si en los lugares donde vamos a codificar nuevas funcionalidades
+              las cuales las podemos ubicar cuando volvamos a abrir el archivo, mediante el menu:  Ver ->  Lista de Tareas
             */
             Alumno juan;
             Alumno maria;
@@ -51,6 +52,7 @@ namespace ConsoleApp2
             set { password = value; }
         }
 
+        //TODO: TENGO QUE AGREGAR UN ATRIBUTO NUEVO
         public int Dni //creamos la propiedad Dni utilizando la anotacion lambda
         {
             get => this.dni;
@@ -107,6 +109,7 @@ namespace ConsoleApp2
 
         public string getNombre() // metodo getter, se utiliza para obtener datos del objeto
         {
+            //TODO: TENGO QUE AGREGAR UNA VARIABLE 
             return nombre;
         }
 
@@ -125,9 +128,4 @@ namespace ConsoleApp2
 
 
 }
-
-
-
-
-
 
