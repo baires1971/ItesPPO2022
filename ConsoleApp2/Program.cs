@@ -8,8 +8,8 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* las propiedades en C# pueden ser de solo lectura o de solo escritura, dependiendo si optamos por poner solo un metodo get
-              o un metodo set. Tambien podemos simplificar la sintaxis de las propiedades con el operador lambda
+            /* Cuando las clases que codificamos son muy grandes con una cantidad enorme de lineas de codigo. Podemos en C# dividirlas 
+              en partes mas pequeñas 
             */
             Alumno juan;
             Alumno maria;
@@ -32,7 +32,7 @@ namespace ConsoleApp2
         }
     }
 
-    class Alumno
+    partial class Alumno
     {
         private string nombre;
         private DateTime nacimiento;
@@ -85,6 +85,10 @@ namespace ConsoleApp2
             this.password = "ites2022";
             this.Ojos = "marrones";
         }
+
+    }
+    partial class Alumno
+    {
         private int cantAnios(int dias)
         {
             return (dias / ANIO);
@@ -120,7 +124,10 @@ namespace ConsoleApp2
     }
 
 
-
 }
+
+
+
+
 
 
