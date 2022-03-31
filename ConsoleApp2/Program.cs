@@ -9,7 +9,7 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
             /* podemos crear clases anonimas con las siguientes restricciones: no pueden contener atributos publicos, 
-             * los atributos deben estar inicializados y no pueden ser static, no se pueden definir metodos   
+             los atributos deben estar inicializados y no pueden ser static, no se pueden definir metodos   
            */
 
 
