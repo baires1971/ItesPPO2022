@@ -8,20 +8,18 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* los atributos y metodos static o de clase, pertenecen a la clase, no forman parte de los objetos instanciados de dicha clase
-              al crearse la aplicacion se reserva memoria ram para estas variables y metodos, aunque no exista ningun objeto de dicha clase
+            /* podemos crear clases anonimas con las siguientes restricciones: no pueden contener atributos publicos, 
+             * los atributos deben estar inicializados y no pueden ser static, no se pueden definir metodos   
            */
 
 
             Profesor Juan = new Profesor("Juan", 30456778, 1.78d, 78);
-            Profesor Jose = new Profesor("Jose", 34561223, 1.74d, 80);
-            Profesor Amanda = new Profesor("Amanda", 32078555, 1.75d, 75);
-            Console.WriteLine("El legajo con variable normal de Juan es: {0}", Juan.GetLegajoNormal());
-            Console.WriteLine("El legajo con variable estatica de la clase Profesor es: {0}", Profesor.GetLegajo());
-            Console.WriteLine("El legajo variable normal de Jose es: {0}", Jose.GetLegajoNormal());
-            Console.WriteLine("El legajo con variable estatica de la clase Profesor es: {0}", Profesor.GetLegajo());
-            Console.WriteLine("El legajo variable normal de Amanda es: {0}", Amanda.GetLegajoNormal());
-            Console.WriteLine("El legajo con variable estatica de la clase Profesor es: {0}", Profesor.GetLegajo());
+            var Jose = new { Nombre = "Jose", Dni = 43555709, Altura = 1.72d, Peso = 76 };//jose es de una clase anonima
+            var Amanda = new { Nombre = "Amanda", Dni = 32078555, Altura = 1.75d, Peso = 75 };
+            //como las clases anonimas de jose y amanda, tienen los atributos de igual cantidad, tipo y orden, son la misma clase anonima
+            Jose = Amanda;//como son de la misma clase anonima podemos hacer esta asignacion
+            Console.WriteLine("El profesor {0} mide {1} metros de altura y pesa {2} kilogramos", Jose.Nombre,Jose.Altura, Jose.Peso);
+            Console.WriteLine("La profesora {0} mide {1} metros de altura y pesa {2} kilogramos", Amanda.Nombre, Amanda.Altura, Amanda.Peso);
             Console.ReadKey();
         }
 
