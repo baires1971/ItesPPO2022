@@ -13,6 +13,9 @@ namespace ConsoleApp2
         public double Altura { get; set; }
         public double Peso { get; set; }
 
+        private static int legajo = 0;
+
+        private int legajo_normal = 0;
         public Profesor(string nombre, int dni, double altura, double peso)
         {
             this.Nombre = nombre;
@@ -21,5 +24,14 @@ namespace ConsoleApp2
             this.Peso = peso;
         }
 
+        public static int GetLegajo() 
+        {
+            return legajo++;
+        }
+
+        public int GetLegajoNormal()
+        {
+        return this.legajo_normal++;
+        }
     }
 }
