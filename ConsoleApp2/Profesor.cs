@@ -19,5 +19,8 @@ namespace ConsoleApp2
         public void Firmar() { Console.WriteLine("yo firmo como el profesor {0}", this.Nombre); }
         //si queremos ocultarlo al metodo de la clase padre, agregamos la palabra new
         // public new void Firmar() { Console.WriteLine("yo firmo como el profesor {0}", this.Nombre); }
+
+
+        private void moverse() { this.Caminar(); }  //aca estamos llamando el metodo protected caminar de la clase padre "Persona"
     }
 }

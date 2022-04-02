@@ -8,12 +8,9 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* Si tenemos un metodo en la clase padre y en la clase hijo escribimos un metodo con el mismo nombre y parametros, entonces el compilador
-             * oculta el medoto de la clase padre y nos da una advertencia que debemos agregar al metodo la palabra new y el compilador toma estos metodos
-             * como dos metodos totalmente diferentes. Si queremos que un metodo de nuestra clase sea implementado de forma diferente por las clases hijas
-             * utilizamos el modificador virtual, entonces obligamos a las clases hijas de implementarlo de manera diferentes cada una. pero en la clase hija
-             * para que el compilador interprete que el metodo es una modificacion del metodo padre y no un metodo diferente, hay que agregar el modificador override
-             * Que un mismo metodo se comporte de manera diferente es un principio del poliformismo 
+            /* podemos escribir un metodo de una clase con el modificador public, private y protected
+             * protected hace que el metodo solo sea accesible por la clase donde lo declaramos y por las clases hijas de esta. no pudiendose
+             * llamar desde otras clases, esta en una posicion intermedia entre private y public
               
            */
             
@@ -27,6 +24,7 @@ namespace ConsoleApp2
                                  //metodo se comporta de manera distinta
             personas[2] = Jorge;
             for(int i = 0; i < personas.Length; i++) { personas[i].Firmar(); }
+            personas[1].Caminar; //si intentamos acceder al metodo caminar() de la clase persona no podemos porque es del tipo protected
 
 
         }
