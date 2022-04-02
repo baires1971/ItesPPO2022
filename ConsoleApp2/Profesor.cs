@@ -16,5 +16,8 @@ namespace ConsoleApp2
             this.Legajo = 100;
         }
         //-----------------METODOS------------------------------
+        public void Firmar() { Console.WriteLine("yo firmo como el profesor {0}", this.Nombre); }
+        //si queremos ocultarlo al metodo de la clase padre, agregamos la palabra new
+        // public new void Firmar() { Console.WriteLine("yo firmo como el profesor {0}", this.Nombre); }
     }
 }

@@ -17,6 +17,7 @@ namespace ConsoleApp2
         }
         //---------------METODOS-----------------
 
-
+        //agregamos el modificador override para indicar que estamos modificando el metodo firmar de la clase padre
+        public override void Firmar() { Console.WriteLine("yo firmo como el alumno {0}", this.Nombre); }
     }
 }

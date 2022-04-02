@@ -69,5 +69,8 @@ namespace ConsoleApp2
             
         }
 
+        //public void Firmar() { Console.WriteLine("Yo firmo como una persona"); }
+        //declaramos virtual el metodo para que las clases hijas los modifiquen segun sea mas apropiado por las empresas.
+        public virtual void Firmar() { Console.WriteLine("Yo firmo como una persona"); }
     }
 }
