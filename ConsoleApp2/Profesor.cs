@@ -6,32 +6,15 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    internal class Profesor
+    internal class Profesor: Persona
     {
-        public string Nombre { get; set; }
-        public int Dni { get; set; }
-        public double Altura { get; set; }
-        public double Peso { get; set; }
-
-        private static int legajo = 0;
-
-        private int legajo_normal = 0;
-        public Profesor(string nombre, int dni, double altura, double peso)
+        //-------------------PROPIEDADES---------------
+        public int Legajo { get; set; }
+        //---------CONSTRUCTOR DE LA CLASE-------------------
+        public Profesor(string nombre, int dni, double altura, double peso, DateTime nacimiento) : base(nombre, dni, altura, peso, nacimiento)
         {
-            this.Nombre = nombre;
-            this.Dni = dni;
-            this.Altura = altura;
-            this.Peso = peso;
+            this.Legajo = 100;
         }
-
-        public static int GetLegajo() 
-        {
-            return legajo++;
-        }
-
-        public int GetLegajoNormal()
-        {
-        return this.legajo_normal++;
-        }
+        //-----------------METODOS------------------------------
     }
 }

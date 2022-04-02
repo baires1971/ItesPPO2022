@@ -8,67 +8,36 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* podemos crear arreglos con objetos o de clases anonimas y recorrerlos con for() y foreach()    
+            /* podemos crear una clase que hereda las propiedades, metodos y el constructor de otra clase padre
+               si la clase padre no tiene constructor la clase hija hereda el constructor por defecto  public Constructor(): base()
+               podemos utilizar propiedades en las clases hijas que no creamos, pero que pertenecen a la clase padre
+               cuando asignamos un objeto a una variable de la misma clase pero sin instanciar creamos dos referencias o punteros al mismo 
+               objeto en memoria
+               podemos asignar un objeto de una clase hija a un objeto de clase padre pero no al reves, y cualquier objeto a uno de la 
+               clase object que es la clase padre de toda la jerarquia de clases de C#, este principio se llama de sustitucion
+               podemos crear un arreglo de una clase padre y asignarle distintos objetos de sus clases hijas.
            */
-
-            //declaramos un array de manera explicita
-            int[] datos = new int[3];
-            datos[0] = 1;
-            datos[1] = 2;
-            datos[2] = 3;
-            for (int i = 0; i < datos.Length; i++) { Console.WriteLine(datos[i]); }
+            
+            Profesor Juan = new Profesor("Juan", 27869324, 1.75d, 76d,DateTime.Parse("12/03/2000"));
+            Alumno Maria = new Alumno("Maria", 30124665, 1.70d, 65d, DateTime.Parse("05/04/2000"));
+            Console.WriteLine("Maria tiene una edad de {0} años", Maria.Edad); //edad no esta definido en la clase alumno
             Console.WriteLine();
+            Profesor Jorge = Juan; //creamos dos referencias o punteros al mismo objeto
+            Console.WriteLine("Jorge tiene como nombre: {0}", Jorge.Nombre);
+            Persona Alguien = Juan;
+            //Juan = Alguien; esta asignacion no se puede, asignar una clase padre a una hija
+            Object Cualquiera = Juan;
+            Cualquiera = Alguien; //esto esta permitido porque la clase object esta en la cuspide de la jerarquia de clases de C#
+            Persona[] personas = new Persona[3];
+            personas[0] = Juan;  //creamos un arreglo donde podemos tener varios objetos de distintas clases, profesor y alumno
+            personas[1] = Maria;
+            personas[2] = Jorge;
+            // Alguien tiene todos los metodos de la clase persona pero no tiene el metodo de la clase profesor
+            Console.WriteLine("la edad de alguien es: {0} pero no tiene legajo como Juan {1}",Alguien.Edad,Juan.Legajo);
 
-            int[] valores = { 2, 3, 4, 5 };
-            foreach(int val in valores) { Console.WriteLine(val); }
-            Console.WriteLine();
+            //
 
-            //declaramos un array de manera implicita
-            var numeros = new[] { 1, 3, 4, 5 };
-            for(var i = 0; i < numeros.Length; i++) { Console.WriteLine(numeros[i]); }
-            Console.WriteLine();
-
-            //declaramos un array de objetos Profesor
-            Profesor Juan = new Profesor("Juan", 30456778, 1.78d, 78);
-            Profesor Jose = new Profesor("Jose", 23456789, 1.71d, 75);
-            Profesor[] profesores = new Profesor[] { Juan, Jose };
-            for( int i = 0; i < profesores.Length; i++) 
-            {
-                Console.WriteLine("El profesor {0} tiene una altura de {1}",profesores[i].Nombre, profesores[i].Altura);
-            }
-            Console.WriteLine();
-
-            Profesor[] profesores_ver2 = new Profesor[2];
-            profesores_ver2[0] = new Profesor("Juan", 30456778, 1.78d, 78);
-            profesores_ver2[1] = new Profesor("Jose", 23456789, 1.71d, 75);
-
-            Profesor[] profesores_ver3 = { new Profesor("Juan", 30456778, 1.78d, 78), new Profesor("Jose", 23456789, 1.71d, 75) } ;
-
-            Profesor[] profesores_ver4 = new Profesor[2];
-            profesores_ver4[0] = Juan;
-            profesores_ver4[1] = Jose;
-            foreach( Profesor profesor in profesores)
-            {
-                Console.WriteLine("El profesor {0} tiene una altura de {1}", profesor.Nombre, profesor.Altura);
-            }
-            Console.WriteLine();
-
-            //declaramos un array de clases anonimas
-            var datosAnonimos = new[]
-            {
-                new {Nombre = "Juan", Dni = 30456778, Altura =  1.78d, Edad =  78},
-                new {Nombre = "Jose", Dni = 23456789, Altura = 1.71d, Edad = 75}
-            };
-            foreach(var dato in datosAnonimos) 
-            {
-              Console.WriteLine("El profesor {0} tiene una altura de {1}", dato.Nombre, dato.Altura);
-            }
-
-            Console.ReadKey();
         }
-
-
-
     }
 }
 
