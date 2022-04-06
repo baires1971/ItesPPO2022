@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    internal class Alumno: Persona
+    internal sealed class Alumno: Persona  //creamos una clase sellada alumno con el modificador sealed
     {
         //---------PROPIEDADES-----------------
         public int Matricula { get; set; }
@@ -19,5 +19,14 @@ namespace ConsoleApp2
 
         //agregamos el modificador override para indicar que estamos modificando el metodo firmar de la clase padre
         public override void Firmar() { Console.WriteLine("yo firmo como el alumno {0}", this.Nombre); }
+    }
+
+
+    class Oyente: Alumno //el compilador da error porque oyente no puede heredar de alumno porque esta esta sellada
+    {
+        public Oyente(string nombre, int dni, double altura, double peso, DateTime nacimiento): base(nombre, dni, altura, peso, nacimiento) 
+        {
+        
+        }
     }
 }

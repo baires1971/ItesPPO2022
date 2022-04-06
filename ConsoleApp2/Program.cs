@@ -8,9 +8,9 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* las clases abstractas generalmente inician una jerarquia de clases, tienen por lo menos 1 metodo abstracto, el cual 
-             * es declarado en la clase abstracta pero no implementada. esto obliga a las clases hijas que heredan a implementar los metodos
-             * abstractos. una clase abstracta puede tener metodos normales y abstractos a la vez
+            /* Cuando no queremos que una clase que creamos pueda ser heredara de otra clase hija, o si queremos que cuando creamos una clase
+             * que hereda de otra y no podamos sobreescribir algun metodo en particular, utilizamos el modificar sealed, 
+             * es decir creamos clases o metodos sellados, con clases o metodos que no se pueden heredar o sobreescribir.
              *               
            */
             Profesor Juan = new Profesor("Juan", 23456789, 1.75d, 86d, DateTime.Parse("12/07/2001"));
