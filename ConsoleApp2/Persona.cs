@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    internal class Persona
+    internal abstract class Persona   //declaro esta clase como abstracta
     {
 
         //---------------CONSTANTES----------------
@@ -69,10 +69,10 @@ namespace ConsoleApp2
             
         }
 
-        //public void Firmar() { Console.WriteLine("Yo firmo como una persona"); }
-        //declaramos virtual el metodo para que las clases hijas los modifiquen segun sea mas apropiado por las empresas.
-        public virtual void Firmar() { Console.WriteLine("Yo firmo como una persona"); }
+        //el metodo Firmar() esta declarado como abstracto, debe ser implementado por las clases que hereden de persona
+        
+        public abstract void Firmar();
 
-        protected void Caminar() { Console.WriteLine("estoy caminando"); }
+        
     }
 }

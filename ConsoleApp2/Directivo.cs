@@ -34,6 +34,9 @@ namespace ConsoleApp2
          */
         void IAdministrativo.UsarLogica() { Console.WriteLine("Utilizo la logica"); }
         void IDocente.UsarLogica() { Console.WriteLine("Utilizo otro tipo de logica"); }
+       
+        //este metodo abstracto lo sobreescribimos para darle una implimentacion especifica para la clase profesor
+        public override void Firmar() { Console.WriteLine("yo firmo como un directivo", this.Nombre); }
 
     }
 }

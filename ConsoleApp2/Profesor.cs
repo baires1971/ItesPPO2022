@@ -16,11 +16,9 @@ namespace ConsoleApp2
             this.Legajo = 100;
         }
         //-----------------METODOS------------------------------
-        public void Firmar() { Console.WriteLine("yo firmo como el profesor {0}", this.Nombre); }
-        //si queremos ocultarlo al metodo de la clase padre, agregamos la palabra new
-        // public new void Firmar() { Console.WriteLine("yo firmo como el profesor {0}", this.Nombre); }
-
-
-        private void moverse() { this.Caminar(); }  //aca estamos llamando el metodo protected caminar de la clase padre "Persona"
+        
+        //este metodo abstracto lo sobreescribimos para darle una implimentacion especifica para la clase profesor
+        public override void Firmar() { Console.WriteLine("yo firmo como el profesor {0}", this.Nombre); }
+                        
     }
 }

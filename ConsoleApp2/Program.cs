@@ -8,24 +8,18 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* cuando una clase hereda de varias interfaces, pude ocurrir que dos o mas posean un metodo que tenga el mismo nombre, numero de parametros
-             * y devuelva el mismo tipo de valor. En ese caso se produce una ambiguedad, cuando implementamos el metodo a que interface corresponde?
-             * el compilador no arroja error, debemos implementar dos metodos uno para cada interface, pero de manera privada, lo cual no podemos
-             * acceder a estos metodos desde fuera de la clase. para solucionar este problema tenemos que utilizar el principio de sustitucion.
-              
+            /* las clases abstractas generalmente inician una jerarquia de clases, tienen por lo menos 1 metodo abstracto, el cual 
+             * es declarado en la clase abstracta pero no implementada. esto obliga a las clases hijas que heredan a implementar los metodos
+             * abstractos. una clase abstracta puede tener metodos normales y abstractos a la vez
+             *               
            */
+            Profesor Juan = new Profesor("Juan", 23456789, 1.75d, 86d, DateTime.Parse("12/07/2001"));
+            Alumno Carlos = new Alumno("Carlos", 26656897, 1.65d, 78d, DateTime.Parse("10/10/2000"));
+            Directivo Francisco = new Directivo("Francisco", 33454847, 1.72d, 70d, DateTime.Parse("01/12/2002"));
+            Juan.Firmar(); //metodo abstracto heredado de la clase persona e implementado para la clase Profesor
+            Carlos.Firmar(); //metodo abstracto heredado de la clase persona e implementado para la clase Alumno
+            Francisco.Firmar(); //metodo abstracto heredado de la clase persona e implementado para la clase Alumno
 
-            Directivo Miguel = new Directivo("Miguel", 23456921, 1.73d, 78d, DateTime.Parse("12/07/2000"));
-            Miguel.UsarPedagogia();  //metodo heredado de la interface IDocente
-            Miguel.UsarExcel();      //metodo heredado de la interface IAdministrativo  
-            //Miguel.UsarLogica();  //esta llamada esta mal, porque no se sabe a cual interface se hace referencia
-            //debemos utilizar el principio de sustitucion
-            IAdministrativo administrativo = Miguel;
-            administrativo.UsarLogica(); //el metodo usarlogica() pertenece a la interface IAdministrativo
-            IDocente docente = Miguel;
-            docente.UsarLogica();  // el metodo usarlogica() pertenece a la interface IDocente
-
-            Console.WriteLine(Miguel.Edad); //propiedad heredada de la clase persona
         }
     }
 }
