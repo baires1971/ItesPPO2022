@@ -1,0 +1,4 @@
+este es una linea del archivo txt
+esta es la segunda linea
+esta es la tercera linea
+esta es la ultima linea
