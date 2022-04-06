@@ -22,11 +22,4 @@ namespace ConsoleApp2
     }
 
 
-    class Oyente: Alumno //el compilador da error porque oyente no puede heredar de alumno porque esta esta sellada
-    {
-        public Oyente(string nombre, int dni, double altura, double peso, DateTime nacimiento): base(nombre, dni, altura, peso, nacimiento) 
-        {
-        
-        }
-    }
 }

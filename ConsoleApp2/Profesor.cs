@@ -26,17 +26,6 @@ namespace ConsoleApp2
                         
     }
 
-    internal class Erudito : Profesor 
-    {
-        public Erudito(string nombre, int dni, double altura, double peso, DateTime nacimiento) : base(nombre, dni, altura, peso, nacimiento) 
-        {
-        
-        }
-        public override void Firmar() //el compilador da error al intentar sobreescribir el metodo heredado firmar()
-        {
-            base.Firmar();
-        }
 
-    }
 
 }
