@@ -8,6 +8,13 @@ namespace ConsoleApp2
 {
     internal class Alumno
     {
-        public Alumno() { }
+        public double Edad { get; set; }
+        public string Nombre { get; set; }
+
+        public Alumno(string _nombre, int _edad) 
+        {
+           this.Nombre = _nombre;
+           this.Edad = _edad;
+        }
     }
 }

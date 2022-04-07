@@ -9,15 +9,21 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* En .NET los objetos instanciados en memoria que ya no se utilizan son destruidos por el recolector de basura para liberar memoria
-             * podemos decirle a nuestra clase que al momento que el objeto sea destruido o sacado de memoria se ejecute un codigo
-             * especifico que nosotros queramos, como puede ser cerrar una conexion a una base de datos, cerrar un archivo en disco, conexion http, etc.
-             * este metodo se llama destructor de la clase.
+            /* Programacion Generica se caracteriza para la reutilizacion del codigo, creando clases genericas que pueda manejar cualquier
+             * tipo de objetos
+             * 
              *  
              * 
            */
-            Fichero archivo = new Fichero();
-
+            Deposito<int> deposito = new Deposito<int>();
+            Deposito<Alumno> deposito2 = new Deposito<Alumno>();
+            deposito.SetDato(4);
+            deposito.SetDato(2);
+            deposito.SetDato(10);
+            deposito2.SetDato(new Alumno("Juan", 23));
+            deposito2.SetDato(new Alumno("Maria", 18));
+            Console.WriteLine("El deposito tiene en la ultima posicion el numero: {0}", deposito.GetLast());
+            Console.WriteLine("El primer alumno se llama {0} y tiene {1} años", deposito2.GetDato(0).Nombre, deposito2.GetDato(0).Edad);
         }
     }
 }
