@@ -6,48 +6,43 @@ namespace ConsoleApp2
     
     class Program
     {
+        delegate void FuncionDelegado();
+        delegate void FuncionDelegado2(int dato);
         static void Main(string[] args)
         {
-            /* Las Colecciones que pertenecen al namespace System.Collection.Generic, sirven para almacenar objetos
-             * son clases genericas, permiten ordenar, añadir, eliminar, buscar, etc.
-             * 
+            /* Los delegados son referencias a metodos, es decir funciones que delegan su funcionalidad a otro metodo
+             * sirven para llamar a eventos en interfaces graficas, pueden llamar a distintos metodos ubicados en distintas clases
            */
-            // creamos una lista de enteros
-            List<int> listado = new List<int>();
-            listado.Add(1);  //agregamos el numero 1 en la primera posicion de la lista
-            listado.Add(2);
-            listado.Add(3);
-            for (int i = 0; i < listado.Count; i++) Console.WriteLine(listado[i]); 
 
-            Console.WriteLine("======================================================================");
-
-            LinkedList<int> lista = new LinkedList<int>();
-            lista.AddFirst(1);
-            lista.AddLast(3);  //agregamos el numero 3 en la ultima posicion de la linkedlist
-            lista.AddLast(4);
-            lista.AddLast(5);
-            lista.AddFirst(9);
-            LinkedListNode<int> unNodo = new LinkedListNode<int>(14); //creamos un nodo con el valor 14
-            lista.AddFirst(unNodo);  //agregamos el nodo creado en la primera posicion de la linkedlist
-            foreach (int i in lista) { Console.WriteLine(i); }
-            Console.ReadKey();
-            Console.WriteLine("======================================================================");
-            lista.Remove(5); //removemos el numero 5 de la linkedlist
-            for (LinkedListNode<int> nodo = lista.First; nodo != null; nodo = nodo.Next) 
-            {
-                int elemento = nodo.Value;
-                Console.WriteLine(elemento);
-            }
-            Console.WriteLine("======================================================================");
-            Queue<int> cola = new Queue<int>();
-            cola.Enqueue(5); //agregamos el numero 5 al final de la cola
-            cola.Enqueue(9);
-            cola.Enqueue(7);
-            foreach (int i in cola) { Console.WriteLine(i); }
-
-
+            //instanciamos el objeto delegado apuntando el metodo estatico de la clase tenista
+            FuncionDelegado delegado = new FuncionDelegado(Tenista.Jugar);
+            //utilizamos el delegado
+            delegado();
+            //creamos un objeto alumno
+            Alumno alumno = new Alumno();
+            //apuntamos el delegado ya creado al metodo leer() del objeto alumno
+            delegado = alumno.leer;
+            delegado();
+            FuncionDelegado2 delegado2 = new FuncionDelegado2(alumno.cuadrado);
+            delegado2(3);
 
         }
+    }
+
+    public class Alumno 
+    {
+        public void leer() { Console.WriteLine("Estoy Estudiando Programacion"); }
+        public void cuadrado(int numero) 
+        {
+            long resultado = numero * numero;
+            Console.WriteLine("El cuadrado del numero {0} es {1}", numero, resultado);
+        }
+    
+    }
+
+    public class Tenista 
+    {
+        public static void Jugar() { Console.WriteLine("Estoy Jugando al Tenis"); }
     }
         
 }
