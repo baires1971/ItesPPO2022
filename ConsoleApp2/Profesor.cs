@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    internal class Alumno: IUniversidad
+    internal class Profesor: IUniversidad
     {
         private int legajo;
-        public Alumno(int legajo){ this.legajo = legajo; }
+        public Profesor(int legajo) { this.legajo = legajo; }
         public int GetLegajo() { return legajo; }
+
     }
 }

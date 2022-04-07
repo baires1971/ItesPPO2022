@@ -9,25 +9,30 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            /* Programacion Generica se caracteriza para la reutilizacion del codigo, creando clases genericas que pueda manejar cualquier
-             * tipo de objetos
+            /* Clases genericas con restricciones sirven para manejar cualquier tipo de datos, pero restringiendo su uso para ciertas
+             * clases u objetos que nosotros queramos, por ejemplo si queremos crear un deposito que almacene solamente objetos de 
+             * clases que tengan relacion con una universidad, no debiendo almacenar clases que no tengan que ver con el ambito academico
+             * para ello a las clases de la universidad implementamos una interface especifica que no posean las demas clases
+             * 
              * 
              *  
              * 
            */
-            Deposito<int> deposito = new Deposito<int>();
-            Deposito<Alumno> deposito2 = new Deposito<Alumno>();
-            deposito.SetDato(4);
-            deposito.SetDato(2);
-            deposito.SetDato(10);
-            deposito2.SetDato(new Alumno("Juan", 23));
-            deposito2.SetDato(new Alumno("Maria", 18));
-            Console.WriteLine("El deposito tiene en la ultima posicion el numero: {0}", deposito.GetLast());
-            Console.WriteLine("El primer alumno se llama {0} y tiene {1} años", deposito2.GetDato(0).Nombre, deposito2.GetDato(0).Edad);
+            Deposito<Alumno> deposito = new Deposito<Alumno>();
+            Deposito<Profesor> deposito2 = new Deposito<Profesor>();
+            deposito.SetDato(new Alumno(100));
+            deposito2.SetDato(new Profesor(30));
+            //si queremos crear un deposito de la clase veterinario que no implementa la interface IUniversidad el compilador no nos permite
+            Deposito<Veterinario> deposito3 = new Deposito<Veterinario>();
         }
     }
+        
 }
 
+interface IUniversidad
+{
+    int GetLegajo();
+}
 
 
 

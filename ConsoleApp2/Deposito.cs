@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    internal class Deposito<T>  //especificamos una clase generica con un generico, que es una letra por convencion es una T, que significa                  
-    {                           // cualquier tipo de objeto
-                                // 
+    //declaramos una clase generica con restricciones , donde puede manejar cualquier objeto tipo T pero esta obligado a implementar 
+    //la interface IUniversidad
+    internal class Deposito<T> where T:IUniversidad                   
+    {                           
+                                 
         List<T> almacen;
         public Deposito()
         {
