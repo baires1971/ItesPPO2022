@@ -3,51 +3,41 @@ using System.Collections.Generic;
 
 namespace ConsoleApp2
 {
-    
+
     class Program
     {
 
-
+        public delegate double Calcular(double numero);
+        public delegate double Calcular2(double num1, double num2);
         static void Main(string[] args)
         {
             /* 
-             * Los delegados predicados son referencias a metodos y solo devuelven true o false. se usan para filtrar listas de valores
-             * comprobando si una condicion es verdadera o falsa
+             * Las expresiones lambdas son funciones anonimas, para ejecutar tareas sencillas que no necesitan ser declaradas previamente
+             * simplifica el codigo, se utilizan en delegados sencillos, metodos getter, setter, expresiones linq query, etc.
+             * se codifican asi:   parametro => bloque sentencia
            */
-            List<double> listaNumeros = new List<double>();
+            
+            Alumno juan = new Alumno() { Edad = 21, Nombre = "Juan"};
+            Alumno Maria = new Alumno() { Edad = 22, Nombre = "Maria" };
+            Calcular operacion = new Calcular(Matematica.cuadrado);
+            Console.WriteLine("El cuadrado de 2 es {0}", operacion(2));
+            //ahora vamos a realizar los mismo pero sin apuntar al metodo cuadrado de la clase matematica
+            Calcular operacion2 = new Calcular(num => num * num);
+            Console.WriteLine(String.Empty);
+            Console.WriteLine("El cuadrado de 2 es {0}", operacion(2));
+            //ahora usamos una expresion lambda con dos parametros
+            Calcular2 suma = new Calcular2((num1, num2) => num1 + num2);
+            Console.WriteLine(String.Empty);
+            Console.WriteLine("La suma de 4 y 8 es {0}", suma(4,8));
 
-            listaNumeros.AddRange(new double[] { 2, 6, 11, 17, 14, 21, 22, 25, 27, 32, 34, 42, 45, 49, 50, 52, 54, 60, 61, 66 });
+            //utilizamos expresiones lambda para filtrar valores de una lista y tambien para recorrerla
+            List<int> lista = new List<int>() { 1,2,3,4,5,6,7,8,9,10};
+            List<int> multiplosDeDos = lista.FindAll( num => num % 2 == 0);
+            Console.WriteLine("Los numeros multiplos de dos son");
+            multiplosDeDos.ForEach(num => Console.WriteLine(num)); 
+            
+            
 
-            //Declaramos un predicado y lo apuntamos al metodo esmultiplo3 de la clase matematica
-            Predicate<double> predicado = new Predicate<double>(Matematica.EsMultiplo3);
-            //El metodo FindAll() de la clase lista toma como parametro un predicado y devuelve todos los elementos que cumplen 
-            //con el predicado es decir que sean verdaderas
-            List<double> listado = listaNumeros.FindAll(predicado);
-            Console.WriteLine("Listado de numeros multiplos de 3");
-            Console.WriteLine("=================================");
-            foreach (double numero in listado)
-            {
-                Console.WriteLine(numero);
-            }
-            Console.WriteLine("");
-
-            List<Alumno> listadoAlumnos = new List<Alumno>();
-            listadoAlumnos.Add(new Alumno() { Edad = 20, Nombre = "Juan" });
-            listadoAlumnos.Add(new Alumno() { Edad = 32, Nombre = "Maria" });
-            listadoAlumnos.Add(new Alumno() { Edad = 33, Nombre = "Jose" });
-            listadoAlumnos.Add(new Alumno() { Edad = 21, Nombre = "Juana" });
-            listadoAlumnos.Add(new Alumno() { Edad = 25, Nombre = "Marcos" });
-            listadoAlumnos.Add(new Alumno() { Edad = 20, Nombre = "Laura" });
-
-            Predicate<Alumno> predicado2 = new Predicate<Alumno>(Matematica.MayorA30);
-            List<Alumno> listado2 = listadoAlumnos.FindAll(predicado2);
-            Console.WriteLine("Listado de alumnos mayores de 30 años");
-            Console.WriteLine("=================================");
-            foreach (var alumno in listado2)
-            {
-                Console.WriteLine("El alumno {0} tiene {1} años",alumno.Nombre,alumno.Edad);
-            }
-            Console.WriteLine("");
         }
     }
 
@@ -60,6 +50,7 @@ namespace ConsoleApp2
         }
         public static double cuadrado(double numero) { return numero * numero; }
 
+        
         public static bool MayorA30(Alumno alumno) 
         {
             if (alumno.Edad > 30) return true;
